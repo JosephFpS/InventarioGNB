@@ -1,0 +1,42 @@
+/* Estilos de la barra de navegación superior */
+.navbar-mainbg {
+    background-color: #8dc63f !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 10px 15px;
+}
+
+/* Enlaces de la navbar */
+.navbar-nav .nav-link {
+    color: rgb(0, 0, 0) !important;
+    transition: color 0.3s ease;
+}
+
+/* Al pasar el cursor, los enlaces cambian a VERDE */
+.navbar-nav .nav-link:hover {
+    color: #8dc63f !important;
+}
+
+/* Logo y tamaño de fuente */
+.navbar-brand {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+/* Ajuste del dropdown */
+.dropdown-menu {
+    min-width: 200px;
+}
+
+/* Estilos para imágenes de perfil */
+.imglogin {
+    height: 50px;
+    margin-right: 10px;
+}
+#menu-toggle{
+    background-color: #8dc63f !important;
+    border: none;
+}

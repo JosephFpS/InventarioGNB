@@ -1,0 +1,37 @@
+{
+  "name": "inventarioBancoGNB",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "author": "alejandro pulido",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
+    "csurf": "^1.10.0",
+    "csv-parser": "^3.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "express-rate-limit": "^7.5.0",
+    "express-session": "^1.17.2",
+    "express-validator": "^7.2.1",
+    "helmet": "^8.1.0",
+    "jquery": "^3.6.0",
+    "morgan": "^1.10.0",
+    "msnodesqlv8": "^4.5.0",
+    "mssql": "^11.0.1",
+    "mysql": "^2.18.1",
+    "node-fetch": "^3.2.3",
+    "nodemon": "^2.0.13",
+    "path": "^0.12.7",
+    "start": "^5.1.0",
+    "sweetalert2": "^11.1.10"
+  },
+  "keywords": [],
+  "description": ""
+}

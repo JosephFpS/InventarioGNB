@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Banco GNB Sudameris - Configuración de Usuario</title>
+    <link rel="icon" type="image/x-icon" href="../imagenes/icono.ico" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/headerSuperior.css" />
+    <link rel="stylesheet" href="../css/headerLateral.css" />
+    <link rel="stylesheet" href="/css/configuracionGeneralParaTodasLasVistas.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
+    <%- include('fragmentos/headerSuperior') %>
+    <%- include('fragmentos/headerLateralIzquierdo') %>
+
+    <div id="contenido" class="p-4 w-10">
+        <h1>Configuración de tu Cuenta</h1>
+        <p>Aquí puedes ver y modificar la información de tu cuenta personal.</p>
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">
+                    <i class="fas fa-user-cog me-2"></i> Información de la Cuenta
+                </h6>
+            </div>
+            <div class="card-body">
+                <form action="/actualizar-usuario" method="post" class="row g-3">
+                    <div class="col-md-6">
+                        <label for="emailusu" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="emailusu" name="emailusu">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="nomusu" class="form-label">Nombre Completo</label>
+                        <input type="text" class="form-control" id="nomusu" name="nomusu">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="usu" class="form-label">Usuario</label>
+                        <input type="text" class="form-control" id="usu" name="usu" readonly>
+                        <div class="form-text">Este campo no se puede modificar.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="rol" class="form-label">Rol de Usuario</label>
+                        <input type="text" class="form-control" id="rol" name="rol" readonly>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="password" class="form-label">Nueva Contraseña (opcional)</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Si deseas cambiar tu contraseña, ingresa la nueva aquí.">
+                    </div>
+
+                    <div class="col-12 mt-3">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmarCambiosModal">
+                            <i class="fas fa-save me-2"></i> Guardar Cambios
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirmarCambiosModal" tabindex="-1" aria-labelledby="confirmarCambiosModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmarCambiosModalLabel">Confirmar Modificación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro de que quieres modificar tus datos?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="confirmarModificacionBtn">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <% if (typeof mensajeExito !== 'undefined') { %>
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="toastExito" class="toast align-items-center text-bg-success border-0 show" role="alert">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <i class="fas fa-check-circle me-2"></i> <%= mensajeExito %>
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+            </div>
+        </div>
+    </div>
+    <% } %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/scriptDiseñoMenu.js"></script>
+
+    <script>
+        const userData = <%- JSON.stringify(usuario) %>;
+        console.log("Datos recibidos en la vista:", userData);
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailInput = document.getElementById('emailusu');
+            const nombreInput = document.getElementById('nomusu'); // Este input ahora debe llenarse con userData.nombre
+            const usuarioInput = document.getElementById('usu');
+            const rolInput = document.getElementById('rol');
+    
+            if (userData) {
+                emailInput.value = userData.emailusu || '';
+                nombreInput.value = userData.nombre || ''; // Cambiado de userData.nomusu a userData.nombre
+                usuarioInput.value = userData.usu || '';
+                rolInput.value = userData.rol || '';
+            }
+    
+            // Opción 2: Lógica para el Modal de Bootstrap
+            const confirmarModificacionBtn = document.getElementById('confirmarModificacionBtn');
+            const formularioConfiguracion = document.querySelector('form');
+            const confirmarCambiosModal = new bootstrap.Modal(document.getElementById('confirmarCambiosModal'));
+    
+            if (confirmarModificacionBtn && formularioConfiguracion) {
+                confirmarModificacionBtn.addEventListener('click', function() {
+                    formularioConfiguracion.submit(); // Envía el formulario cuando se confirma en el modal
+                });
+            }
+        });
+    
+        // Opción 1: Función para confirm()
+        function confirmarModificacion() {
+            return confirm("¿Estás seguro de que quieres modificar tus datos?");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco GNB Sudameris - Tipos Equipos</title>
+    <link rel="icon" type="image/x-icon" href="../imagenes/icono.ico">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/headerSuperior.css">
+    <link rel="stylesheet" href="../css/headerLateral.css">
+    <link rel="stylesheet" href="/css/configuracionGeneralParaTodasLasVistas.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+<body>
+<%- include('fragmentos/headerSuperior') %>
+<%- include('fragmentos/headerLateralIzquierdo') %>
+
+<div id="contenido" class="p-4 w-10">
+    <h1>Tipos De Equipos</h1>
+    <p>Se puede crear diferentes Tipos De Equipos</p>
+
+    <button id="btn-toggle-form" class="btn btn-info mb-4">
+        <i class="fa fa-plus"></i> Nuevo Tipo De Equipo
+    </button>
+
+    <div id="overlay" class="overlay"></div>
+
+    <div class="formulario">
+        <button type="button" id="close-form" class="close-btn">
+            <i class="fa fa-times"></i>
+        </button>
+        <div class="container">
+            <h2 class="form_title mt-4">Registro de Equipos</h2>
+            <form class="form" id="equipo-form">
+                <input type="hidden" id="ID_Equipo" name="ID_Equipo">
+                <div class="mb-3">
+                    <label for="Marca">Id Tipo de Equipo</label>
+                    <input type="text" class="form-control" id="Id_Tipos_Equipos" name="Id_Tipos_Equipos" required readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="Marca">Nombre_Equipo</label>
+                    <input type="text" class="form-control" id="Nombre_Equipo" name="Nombre_Equipo" required>
+                </div>
+                <div class="buttons">
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                    <button type="button" id="btn-close-form" class="btn btn-secondary">Cerrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <h2 class="mt-5">Usuarios Registrados</h2>
+    <div class="d-flex justify-content-end mb-3">
+        <input class="form-control" id="searchInput" type="text" placeholder="Buscar Equipo..."
+            style="width: 250px;">
+    </div>
+    <div class="table-container">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id Tipos Equipos</th>
+                        <th>Nombre_Equipo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/scriptDiseñoMenu.js"></script> 
+<script src="/js/configuracionGeneralParaTodasLasVistas.js"></script>
+
+<script src="/js/gestion/gestionTiposEquipos.js"></script>
+</body>
+</html>

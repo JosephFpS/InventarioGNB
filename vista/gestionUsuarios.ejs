@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Banco GNB Sudameris - Perfiles</title>
+    <link rel="icon" type="image/x-icon" href="../imagenes/icono.ico" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/headerSuperior.css" />
+    <link rel="stylesheet" href="../css/headerLateral.css" />
+    <link rel="stylesheet" href="/css/configuracionGeneralParaTodasLasVistas.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+
+<body>
+    <%- include('fragmentos/headerSuperior') %>
+        <%- include('fragmentos/headerLateralIzquierdo') %>
+
+            <div id="contenido" class="p-4 w-10">
+                <h1>Gestión de Perfiles</h1>
+                <p>Administra la configuración de las cuentas.</p>
+
+                <button id="btn-toggle-form" class="btn btn-info mb-4">
+                    <i class="fa fa-plus"></i> Nuevo Usuario
+                </button>
+
+                <div id="overlay" class="overlay"></div>
+
+                <div class="formulario" style="display:none;">
+                    <button type="button" id="close-form" class="close-btn">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    <div class="container">
+                        <h2 class="form_title mt-4">Registro de Usuarios</h2>
+                        <form class="form" id="user-form">
+                            <input type="hidden" id="ID_Usuario" name="ID_Usuario">
+                            <div class="mb-3">
+                                <label for="Nombres_Usuario">Nombre</label>
+                                <input type="text" class="form-control" id="Nombres_Usuario" name="Nombres_Usuario"
+                                    autocomplete="off" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="Usuario_De_Red">Usuario De Red</label>
+                                <input type="text" class="form-control" id="Usuario_De_Red" name="Usuario_De_Red"
+                                    autocomplete="off" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="Correo">Correo</label>
+                                <input type="email" class="form-control" id="Correo" name="Correo" autocomplete="off"
+                                    required>
+                            </div>
+                            <div class="mb-3" id="password-group">
+                                <label for="Contraseña">Contraseña</label>
+                                <input type="password" class="form-control" id="Contraseña" name="Contraseña"
+                                    autocomplete="off">
+                                <small class="form-text text-muted">Dejar en blanco para no cambiar la
+                                    contraseña.</small>
+                            </div>
+                            <div class="mb-3 select">
+                                <label for="ID_Rol">Rol</label>
+                                <select class="form-select" id="ID_Rol" name="ID_Rol" required>
+                                    <option value="" disabled selected>Seleccionar un rol</option>
+                                </select>
+                            </div>
+                            <div class="buttons">
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                <button type="button" id="btn-close-form" class="btn btn-secondary">Cerrar</button>
+                            </div>
+                        </form>
+                        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+                            <div id="toastError" class="toast align-items-center text-bg-danger border-0" role="alert"
+                                aria-live="assertive" aria-atomic="true">
+                                <div class="d-flex">
+                                    <div class="toast-body" id="toastErrorBody">
+                                    </div>
+                                    <button type="button" class="btn-close btn-close-white me-2 m-auto"
+                                        data-bs-dismiss="toast" aria-label="Cerrar"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="mt-5">Usuarios Registrados</h2>
+                <div class="d-flex justify-content-end mb-3">
+                    <input class="form-control" id="searchInput" type="text" placeholder="Buscar usuarios..."
+                        style="width: 250px;">
+                </div>
+                <div class="table-container">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Usuario De Red</th>
+                                    <th>Correo</th>
+                                    <th>Rol</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="userTableBody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="/js/scriptDiseñoMenu.js"></script>
+            <script src="/js/configuracionGeneralParaTodasLasVistas.js"></script>
+            <script src="/js/gestion/gestionUsuarios.js"></script>
+</body>
+
+</html>

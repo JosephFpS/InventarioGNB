@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Banco GNB Sudameris - Registro</title>
+    <link rel="icon" type="image/x-icon" href="../imagenes/icono.ico">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container" id="container">
+        <img class="imglogin" src="../imagenes/logognb.png" alt="Logo">
+        <h2 class="form_title">Registro</h2>
+        <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+            <div class="alert alert-danger" role="alert">
+                <ul>
+                    <% errors.forEach(error => { %>
+                        <li><%= error.msg %></li>
+                    <% }); %>
+                </ul>
+            </div>
+        <% } %>
+        <form action="/insertarusuario" method="POST" class="form" id="a-form">
+            <div class="inputs">
+                <input class="form__input" type="text" name="Nombres_Usuario" placeholder="Nombre" required>
+                <input class="form__input" type="text" name="Usuario_De_Red" placeholder="Usuario" required>
+                <input class="form__input" type="email" name="Correo" placeholder="Email" required>
+                <input class="form__input" type="password" name="password" placeholder="Contraseña" required>
+                <input class="form__input" type="password" name="confirmarPassword" placeholder="Confirmar Contraseña" required>
+            </div>
+            <div class="buttons">
+                <button type="submit" class="form__button button submit">Registrarse</button>
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    const form = document.getElementById('a-form');
+    const usuarioInput = form.querySelector('input[name="Usuario_De_Red"]');
+
+    form.addEventListener('submit', (e) => {
+        const usuario = usuarioInput.value.trim();
+        if (usuario.length < 4) {
+            e.preventDefault();
+            alert("El nombre de usuario debe tener al menos 4 caracteres.");
+        }
+    });
+</script>
+</html>

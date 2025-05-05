@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco GNB Sudameris - Login</title>
+    <link rel="icon" type="image/x-icon" href="../imagenes/icono.ico">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container form" id="container">
+        <img class="imglogin" src="../imagenes/logognb.png" alt="Logo Banco GNB">
+        <h2 class="form_title">Iniciar Sesión</h2>
+
+
+        <form action="/login" method="POST" id="a-form" autocomplete="off">
+            <div class="inputs">
+                <input type="text" name="usuario" class="form__input" placeholder="Usuario" required>
+                <input type="password" name="password" class="form__input" placeholder="Contraseña" required>
+            </div>
+            <div class="buttons">
+                <button type="submit" class="button">Iniciar Sesión</button>
+                <a href="/registrarse" class="button secondary">Registrarse</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,175 @@
+/* Contenido principal */
+#contenido {
+    margin-top: 80px;
+    padding: 20px;
+    min-height: calc(100vh - 80px);
+    transition: margin-left 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Barra de búsqueda */
+#searchInput {
+    width: 250px;
+}
+
+#btnSearch {
+    font-size: 14px;
+    margin-left: 10px;
+    padding: 5px 10px;
+}
+
+/* Tabla */
+.table th, .table td {
+    text-align: center;
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(169, 169, 169, 0.7);
+    z-index: 10000;
+    display: none;
+}
+
+/* Formulario */
+.formulario {
+    display: none;
+    width: 100%;
+    max-width: 600px;
+    height: 89vh;
+    max-height: 90vh;
+    overflow-y: auto;
+    border: 2px solid #8dc63f;
+    border-radius: 5px;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10001;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+}
+
+/* Bloquear scroll del body cuando el formulario está abierto */
+body.form-open {
+    overflow: hidden;
+}
+
+
+/* Botón de cierre del formulario */
+#close-form {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 25px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #8dc63f;
+    font-weight: bold;
+}
+
+/* Estilos de etiquetas y entradas del formulario */
+label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form__input.form-control {
+    margin-bottom: 15px;
+}
+
+/* Botones */
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    gap: 4%;
+}
+
+.form__button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #8dc63f;
+    color: white;
+    border: 1px solid #66c2c6;
+}
+
+.form__button:hover {
+    background: #66c2c6;
+}
+
+.btn-cerrar {
+    background-color: #5aaeb3;
+    border: none;
+    color: white;
+}
+
+/* Título del formulario */
+.form_title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #8dc63f;
+    display: flex;
+    justify-content: center;
+}
+.table-container {
+    position: relative; /* Mantiene la tabla en su posición */
+    width: 100%; /* Ajusta al ancho del contenedor */
+}
+
+.table-responsive {
+    max-height: 400px; /* Fija el tamaño del área de la tabla */
+    overflow-y: auto; /* Activa el scroll solo dentro de la tabla */
+    border: 1px solid #ddd; /* Borde opcional */
+}
+
+.table-responsive table {
+    width: 100%;
+    border-collapse: collapse; /* Ajusta la tabla al tamaño del contenedor */
+}
+
+.table-responsive thead th {
+    position: sticky;
+    top: 0;
+    background: white; /* Asegura que el encabezado se mantenga visible */
+    z-index: 2;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1); /* Sombra para separación */
+}
+
+
+
+@media (max-width: 768px) {
+    .table-responsive {
+        overflow-x: auto; /* Habilita el scroll horizontal */
+        display: block; /* Asegura que se ajuste bien */
+        white-space: nowrap; /* Evita el salto de línea en las celdas */
+    }
+
+    .table {
+        width: 100%; /* Asegura que la tabla no se reduzca */
+        min-width: 900px; /* Define un ancho mínimo para la tabla */
+    }
+    
+    .formulario{
+        width: 100% !important;
+        height: 80% !important;
+        left: 50% !important;
+    }
+    .buttons{
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center;
+    }
+}

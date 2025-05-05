@@ -1,0 +1,127 @@
+/* Estilos del menú lateral */
+#sidebar {
+    width: 200px; /* Más pequeño */
+    height: 100%;
+    background-color: #8dc63f !important;
+    position: fixed;
+    top: 60px;
+    left: -200px; /* Oculto por defecto */
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+    border-right: 2px solid #ddd;
+    transition: left 0.3s ease;
+    z-index: 1000; /* Asegura que esté por encima del contenido */
+}
+
+/* Cuando el menú está activo */
+.sidebar-active #sidebar {
+    left: 0;
+}
+
+/* Ajustar el contenido cuando el menú está activo */
+.sidebar-active #contenido {
+    margin-left: 210px;
+}
+
+/* Diseño de los enlaces del menú */
+#sidebar .nav-link {
+    color: white;
+    font-size: 0.9rem; /* Tamaño de fuente reducido */
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    justify-content: flex-start;
+}
+
+/* Hover: fondo BLANCO, texto VERDE */
+#sidebar .nav-link:hover {
+    background-color: white;
+    color: #8dc63f;
+}
+
+/* Ocultar los submenús por defecto */
+.submenu {
+    list-style: none;
+    padding-left: 0;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Cuando el submenú está activo, mostrarlo con animación */
+.submenu-active .submenu {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Estilos de los enlaces dentro del submenú */
+.submenu li {
+    width: 100%;
+}
+
+.submenu .nav-link {
+    display: block;
+    padding: 8px 12px;
+    background-color: #7fbf4f;
+    border-radius: 5px;
+    color: white;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Hover en submenús */
+.submenu .nav-link:hover {
+    background-color: white;
+    color: #8dc63f;
+}
+
+/* Asegurar que la flecha se alinee correctamente */
+.submenu-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Ajustar la flecha dentro del botón de despliegue */
+.submenu-icon i {
+    transition: transform 0.3s ease;
+    font-size: 14px;
+}
+
+/* Rotar la flecha cuando el submenú está activo */
+.submenu-active .submenu-icon i {
+    transform: rotate(180deg);
+}
+
+/* Media queries para dispositivos móviles */
+@media (max-width: 768px) {
+    #sidebar {
+        width: 180px; /* Más pequeño en pantallas pequeñas */
+        left: -180px;
+        margin-top: 9%;
+    }
+
+    .sidebar-active #sidebar {
+        left: 0;
+    }
+
+    .sidebar-active #contenido {
+        margin-left: 190px;
+    }
+
+    #sidebar .nav-link {
+        font-size: 0.8rem; /* Reducir tamaño de fuente */
+        padding: 6px 10px;
+    }
+
+    .submenu .nav-link {
+        padding: 6px 10px;
+    }
+
+}

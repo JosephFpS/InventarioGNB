@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco GNB Sudameris - Gestión de Equipos</title>
+    <link rel="icon" type="image/x-icon" href="../imagenes/icono.ico">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/headerSuperior.css">
+    <link rel="stylesheet" href="../css/headerLateral.css">
+    <link rel="stylesheet" href="/css/configuracionGeneralParaTodasLasVistas.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- <link rel="stylesheet" href="/css/gestionEquipos.css"> </head> -->
+
+    <style>
+        body { /* O #contenido */
+           overflow-y: auto; /* Muestra la barra de scroll vertical si el contenido lo necesita */
+        }
+    </style>
+
+<body>
+    <%- include('fragmentos/headerSuperior') %>
+    <%- include('fragmentos/headerLateralIzquierdo') %>
+
+    <div id="contenido" class="p-4 w-10">
+        <h1>Gestión de Equipos</h1>
+        <p>Administra la información de los equipos.</p>
+
+        <button id="btn-toggle-form" class="btn btn-info mb-4">
+            <i class="fa fa-plus"></i> Nuevo Equipo
+        </button>
+
+        <div id="overlay" class="overlay"></div>
+
+        <div class="formulario" style="display:none;">
+            <button type="button" id="close-form" class="close-btn">
+                <i class="fa fa-times"></i>
+            </button>
+            <div class="container">
+                <h2 class="form_title mt-4">Registro de Equipo</h2>
+                <form class="form" id="equipo-form">
+                    <input type="hidden" id="Id_Tipo_Equipo" name="Id_Tipo_Equipo">
+
+                    <div class="mb-3 select">
+                        <label for="Id_Tipo_Equipos">Tipo de Equipo</label>
+                        <select class="form-select" id="Id_Tipo_Equipos" name="Id_Tipo_Equipos" required>
+                            <option value="" disabled selected>Seleccionar tipo</option>
+                            </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Activo">Activo</label>
+                        <input type="text" class="form-control" id="Activo" name="Activo" autocomplete="off">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Marca">Marca</label>
+                        <input type="text" class="form-control" id="Marca" name="Marca" autocomplete="off">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Modelo">Modelo</label>
+                        <input type="text" class="form-control" id="Modelo" name="Modelo" autocomplete="off">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Id_Serie">Número de Serie</label>
+                        <input type="text" class="form-control" id="Id_Serie" name="Id_Serie" autocomplete="off">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Descripcion">Descripción</label>
+                        <textarea class="form-control" id="Descripcion" name="Descripcion" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Fecha_Asignacion">Fecha de Asignación</label>
+                        <input type="date" class="form-control" id="Fecha_Asignacion" name="Fecha_Asignacion">
+                    </div>
+                    <div class="mb-3 select">
+                        <label for="Tipo_Almacenamiento">Tipo de Almacenamiento</label>
+                        <select class="form-select" id="Tipo_Almacenamiento" name="Tipo_Almacenamiento">
+                            <option value="" disabled selected>Seleccionar tipo</option>
+                            <option value="HDD">HDD</option>
+                            <option value="SSD">SSD</option>
+                            <option value="NVMe">NVMe</option>
+                            <option value="No Aplica">No Aplica</option>
+                            </select>
+                    </div>
+                    <div class="mb-3 select">
+                        <label for="Espacio_Almacenamiento">Espacio de Almacenamiento</label>
+                        <select class="form-select" id="Espacio_Almacenamiento" name="Espacio_Almacenamiento">
+                            <option value="" disabled selected>Seleccionar espacio</option>
+                            <option value="120 GB">120 GB</option>
+                            <option value="240 GB">240 GB</option>
+                            <option value="256 GB">256 GB</option>
+                            <option value="480 GB">480 GB</option>
+                            <option value="500 GB">500 GB</option>
+                            <option value="1 TB">1 TB</option>
+                            <option value="2 TB">2 TB</option>
+                            <option value="No Aplica">No Aplica</option>
+                            </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Direccion_Ip">Dirección IP</label>
+                        <input type="text" class="form-control" id="Direccion_Ip" name="Direccion_Ip" autocomplete="off">
+                    </div>
+                    <div class="mb-3 select">
+                        <label for="Id_Estado_Equipo">Estado del Equipo</label>
+                        <select class="form-select" id="Id_Estado_Equipo" name="Id_Estado_Equipo" required>
+                            <option value="" disabled selected>Seleccionar estado</option>
+                            </select>
+                    </div>
+                    <div class="mb-3 select">
+                        <label for="Id_Oficina">Oficina</label>
+                        <select class="form-select" id="Id_Oficina" name="Id_Oficina" required>
+                            <option value="" disabled selected>Seleccionar oficina</option>
+                            </select>
+                    </div>
+                    <div class="mb-3 select">
+                        <label for="Id_Usuario">Usuario Asignado</label>
+                        <select class="form-select" id="Id_Usuario" name="Id_Usuario">
+                            <option value="" disabled selected>Seleccionar usuario (opcional)</option>
+                            </select>
+                    </div>
+
+                    <div class="buttons">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button type="button" id="btn-close-form" class="btn btn-secondary">Cerrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <h2 class="mt-5">Equipos Registrados</h2>
+        <div class="d-flex justify-content-end mb-3">
+            <input class="form-control" id="searchInput" type="text" placeholder="Buscar equipos..."
+                style="width: 250px;">
+        </div>
+        <div class="table-container">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Tipo de Equipo</th>
+                            <th>Activo</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Número de Serie</th>
+                            <th>Descripción</th>
+                            <th>Fecha de Asignación</th>
+                            <th>Tipo de Almacenamiento</th>
+                            <th>Espacio de Almacenamiento</th>
+                            <th>Dirección IP</th>
+                            <th>Estado del Equipo</th>
+                            <th>Oficina</th>
+                            <th>Usuario Asignado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="equipoTableBody">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/scriptDiseñoMenu.js"></script>
+    <script src="/js/configuracionGeneralParaTodasLasVistas.js"></script>
+    <script src="/js/gestion/gestionEquipos.js"></script> </body>
+
+</html>
