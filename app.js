@@ -35,4 +35,3 @@ app.set('port',process.env.PORT || 1000);//utilizamos el puerto 3000
 app.listen(app.get('port'),()=>{
     console.log(`En el servidor ${app.get('port')}`);
 })
-

@@ -4,6 +4,7 @@
         <li class="nav-item">
             <a class="nav-link" href="/vistaPrincipal"><i class="fas fa-desktop"></i> Inicio</a>
         </li>
+
         <li class="nav-item has-submenu">
             <a class="nav-link submenu-toggle" href="#">
                 <i class="fas fa-folder"></i> Gestión
@@ -16,6 +17,7 @@
                 <li><a class="nav-link" href="/gestionTiposEquipos"><i class="fas fa-tags"></i> Tipos Equipos</a></li>
             </ul>
         </li>
+
         <li class="nav-item has-submenu">
             <a class="nav-link submenu-toggle" href="#">
                 <i class="fas fa-wrench"></i> Configuraciones
@@ -24,9 +26,9 @@
             <ul class="nav flex-column ms-3 submenu">
                 <li><a class="nav-link" href="/vistaConfiguracionPerfil"><i class="fas fa-user-edit"></i>Perfil</a></li>
                 <li><a class="nav-link" href="/vistaConfiguracionEquiposAsignoUsuario"><i class="fas fa-tag"></i>Equipos Asignados</a></li>
-                <!-- <li><a class="nav-link" href="/configuracionUbicaciones"><i class="fas fa-map-marked-alt"></i> Ubicación</a></li> -->
             </ul>
         </li>
+
         <li class="nav-item has-submenu">
             <a class="nav-link submenu-toggle" href="#">
                 <i class="fas fa-chart-bar"></i> Reportes
@@ -36,5 +38,16 @@
                 <li><a class="nav-link" href="/reporteHistorialMovimientosEquipos"><i class="fas fa-exchange-alt"></i> Historial de Movimientos Equipos</a></li>
             </ul>
         </li>
+        <li class="nav-item mt-3 text-center">
+            <form id="form-envio-correo" action="/mail/enviar" method="POST">
+                <input type="hidden" name="destinatario" value="destino@correo.com">
+                <input type="hidden" name="asunto" value="Correo desde Inventario">
+                <input type="hidden" name="mensaje" value="<p>¡Este es un correo de prueba desde la plataforma!</p>">
+                <button type="submit" class="btn btn-outline-success w-100">
+                    <i class="fas fa-paper-plane"></i> Enviar correo
+                </button>
+            </form>
+        </li>
+    
     </ul>
 </div>

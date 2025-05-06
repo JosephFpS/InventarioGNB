@@ -37,4 +37,13 @@
             </ul>
         </li>
     </ul>
+    <% if (usuario.rol === 'Administrador') { %>
+        <ul class="nav flex-column ms-3 submenu"></ul>
+        <li class="nav-item">
+            <a class="nav-link" href="/vistaEnvioCorreo">
+                <i class="fas fa-paper-plane"></i> Enviar Correo
+            </a>
+        </li>
+        <% } %>
+     </ul>
 </div>

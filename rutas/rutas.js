@@ -110,3 +110,10 @@ rutas.get('/api/vistaConfiguracionEquiposAdministrados', verificarSesion, contro
 rutas.get('/api/reportes/historial-movimientos', verificarSesion, controllerReportes.obtenerHistorialMovimientos);
 
 module.exports = rutas;
+
+const controllerCorreo = require('../controller/controllerCorreo');
+rutas.post('/mail/enviar', verificarSesion, verificarRol(['Administrador']), controllerCorreo.enviarCorreoDesdeFormulario);
+rutas.get('/vistaEnvioCorreo', verificarSesion, verificarRol(['Administrador']), (req, res) => {
+    res.render('vistaEnvioCorreo', { usuario: req.session.usuario });
+    
+});

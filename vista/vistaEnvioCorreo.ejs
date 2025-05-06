@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco GNB Sudameris</title>
+    <link rel="icon" type="image/x-icon" href="../imagenes/icono.ico">
+    <!-- Agrega aquí tus CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/headerSuperior.css">
+    <link rel="stylesheet" href="../css/headerLateral.css">
+    <link rel="stylesheet" href="/css/configuracionGeneralParaTodasLasVistas.css">
+
+    <!-- Iconos y fuentes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<style>
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        cursor: pointer;
+        border: 2px solid transparent;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(141, 198, 63, 0.4);
+        border-color: #8dc63f;
+    }
+</style>
+
+
+
+
+<div class="container mt-5">
+    <h2>Enviar correo automático</h2>
+    <form id="form-correo" action="/mail/enviar" method="POST">
+        <div class="mb-3">
+            <label for="destinatario" class="form-label">Destinatario</label>
+            <input type="email" class="form-control" id="destinatario" name="destinatario" placeholder="correo@dominio.com" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="asunto" class="form-label">Asunto</label>
+            <input type="text" class="form-control" id="asunto" name="asunto" placeholder="Asunto del correo" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="mensaje" class="form-label">Mensaje HTML</label>
+            <textarea class="form-control" id="mensaje" name="mensaje" rows="5" placeholder="<p>Contenido en HTML...</p>" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success">
+            <i class="fas fa-paper-plane"></i> Enviar correo
+        </button>
+    </form>
+
+    <hr class="my-4">
+
+    <h4>👀 Previsualización del mensaje</h4>
+    <div id="preview" class="border p-3 bg-light">
+        <em>Escribe en el campo de mensaje para ver cómo se verá el correo.</em>
+    </div>
+</div>
+
+<script>
+    // Mostrar vista previa en tiempo real
+    const mensajeInput = document.getElementById('mensaje');
+    const preview = document.getElementById('preview');
+
+    mensajeInput.addEventListener('input', () => {
+        preview.innerHTML = mensajeInput.value || '<em>Escribe en el campo de mensaje para ver cómo se verá el correo.</em>';
+    });
+</script>
+    
