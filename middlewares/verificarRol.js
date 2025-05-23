@@ -1,10 +1,10 @@
 // middlewares/verificarRol.js
-function verificarRol(rolesPermitidos) {
+function verificarRol() {
     return (req, res, next) => {
-        if (req.session.usuario && rolesPermitidos.includes(req.session.usuario.rol)) {
-            return next();
+        if (req.session && req.session.usuario) {
+            return next(); // Usuario autenticado, se permite el acceso
         } else {
-            return res.status(403).send('Acceso no autorizado.'); // O redirige a una página de error
+            return res.status(403).send('Acceso no autorizado.'); // No hay sesión
         }
     };
 }

@@ -112,8 +112,8 @@ rutas.get('/api/reportes/historial-movimientos', verificarSesion, controllerRepo
 module.exports = rutas;
 
 const controllerCorreo = require('../controller/controllerCorreo');
-rutas.post('/mail/enviar', verificarSesion, verificarRol(['Administrador']), controllerCorreo.enviarCorreoDesdeFormulario);
-rutas.get('/vistaEnvioCorreo', verificarSesion, verificarRol(['Administrador']), (req, res) => {
+rutas.post('/mail/enviar', verificarSesion, verificarRol(['Administrador, Observador']), controllerCorreo.enviarCorreoDesdeFormulario);
+rutas.get('/vistaEnvioCorreo', verificarSesion, verificarRol(['Administrador, Observador']), (req, res) => {
     res.render('vistaEnvioCorreo', { usuario: req.session.usuario });
     
 });

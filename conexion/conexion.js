@@ -3,7 +3,7 @@ const sql = require('mssql');
 const config = {
     user: 'sa', // Cambia esto por tu usuario
     password: 'administrador', // Cambia esto por tu contraseña
-    server: 'Q99012805\\SQL2022', // Cambia esto por tu IP o nombre de servidor
+    server: 'Q99012811\\SQLEXPRESS2022', // Cambia esto por tu IP o nombre de servidor
     database: 'InventarioSudamerisGNB', // Cambia esto por tu base de datos
     options: {
         encrypt: false,
